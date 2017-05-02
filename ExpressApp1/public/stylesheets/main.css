@@ -1,8 +1,177 @@
-﻿body {
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body{
+margin:0;
+padding:0;
+
+}
+.icon{
+  width: 44px;
+  height:40px;
+  border-radius:50px;
+}
+.icon:hover{
+  overflow:visible;
+		box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
+transform: scale(1.05);
+}
+.nav-item{
+opacity:1;
+
+
+}
+.down-list{
+  font-style: italic;
+  font-size: 20px;
+  overflow:visible;
+    box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
+transform: scale(.9);
 }
 
-a {
-    color: #00B7FF;
+.iconav-slider{
+  position: fixed;
+  left:0;
+  top:0;
+ width:100%;
+  padding-top:0;
+
+  overflow:visible;
+		box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
+transform: scale(.9);
+  }
+  #app-container{  padding-top:1%;}
+.nav-item{
+    padding-top:5px;
+    padding:5px;
+    padding-bottom:1px;
 }
+
+.container{
+  padding:0;
+  margin:0;
+  padding-top:10%;
+
+}
+
+#jumbotron{  background:-webkit-radial-gradient(center,
+square,#ff0080 10%,#4000ff 50%);}
+#jumbotron:hover{
+}
+#jumbo-art{
+  -webkit-transition:-webkit-transform .3s,
+background .8s,width .3s,opacity .3s,height .5s,
+font 0.5s,padding 1.5s;
+overflow:visible;
+  box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
+}
+#jumbo-art:hover{
+  overflow:visible;
+		box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
+transform: scale(.9);
+  opacity:.7;
+}
+.jumbo-p{
+  overflow:visible;
+  transform: rotate(360deg);
+}
+  /* video player*/
+
+#start,.start{
+background-image:url("../images/redi.jpg");
+  text-decoration:none;
+border:solid 1px g;
+font:bold 17px tahoma;
+overflow-x: hidden;
+position:relative;
+overflow:hidden;
+padding:0;
+padding-left:1%;
+padding-right:1%;
+margin:0;
+margin-left:5%;
+opacity:.9;
+size:30% 50%;
+width:15%;
+height:40%;
+
+float:left;
+
+display:webkit-flex;
+-webkit-border-radius:none;
+-webkit-transition:-webkit-transform .2s,
+background .2s,width .2s,opacity .1s,height .2s,
+font 0.2s,padding .3s;
+
+ transition:all 0.4s ease-in-out;
+overflow:visible;
+
+
+
+z-index: 9999 !important;
+
+}
+#start:hover{
+	background-image:url('../images/greeni.jpg');
+	overflow:visible;
+		box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
+transform: scale(1.03);
+}
+#start:focus{
+
+
+background:-webkit-radial-gradient(center,
+circle,#66CCFF 70%,#000044 100%);
+-webkit-transform:rotate(-360deg);
+-webkit-transform:translateY(10px);
+font:bold 17px tahoma;
+font:white;
+opacity:1;
+padding-left:0%;
+padding-right:0%;
+
+width:70vw;
+height:70vh;
+
+background-image:url('../images/blur1.jpg');
+position: absolute;
+z-index: 9999 !important;
+display:flex;
+}
+.affix {
+      top:0;
+      width: 100%;
+
+
+    }
+#start:focus section video{
+	height:70vh;
+	width:70vw;
+
+
+  position:fixed;
+  z-index: 9997;
+  padding:0;margin:0;
+
+	}
+  #vid-p,.vid-p{
+	position:relative;
+  text-decoration:none;
+	margin-top:0%;
+	padding-left:20px;
+	font-size:15px;
+  overflow:visible;
+    box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
+transform: scale(.9);
+z-index:9998;
+}
+
+/*photo galary*/
+
+#start:focus section img{
+	height:70vh;
+	width:70vw;
+
+
+  position:fixed;
+  z-index: 9997;
+  padding:0;margin:0;
+
+	}

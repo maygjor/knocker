@@ -1,0 +1,19 @@
+﻿<% include layout.ejs %>
+<% include templates/header.ejs %>
+
+<% include templates/section.ejs %>
+
+<% include templates/sidebar.ejs %>
+
+
+<script>
+    let myvid = document.getElementById('myvid');
+    let startbtn = document.getElementById('startbtn');
+    startbtn.onclick=navigator.getUserMedia({ video: true, audio: true }, (stream) => {
+        myvid.src = window.URL.createObjectURL(stream);
+
+    },(e) => {
+        let error;
+    });
+
+</script>

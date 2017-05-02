@@ -1,0 +1,18 @@
+﻿<body class="app" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <nav class="iconav-slider navbar-inverse bg-inverse " id="index-navbar" style=";position:fixed;width=100%;z-index:999;" data-spy="affix" data-offset-top="197" >
+
+    <ul  class="nav nav-fill  bg-default"aria-haspopup="false" aria-expanded="false"  active="" style="opacity:1;">
+        <% include contacts.ejs %>
+        
+      <!--dropdown menu-->
+     
+      <li class="nav-item" >
+        <a class="nav-link   text-right" style="color:white;font-weight:bold;text-decoration:none;"href="app.php?slide=home">home</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link   text-right" style="color:white;font-weight:bold;text-decoration:none;"href="app.php?slide=upload">Upload</a>
+      </li>
+        <% include dropmenu.ejs %>
+    </ul>
+  </nav>
+  <!--navigation bars-->
