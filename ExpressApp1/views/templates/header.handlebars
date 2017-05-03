@@ -2,8 +2,8 @@
   <nav class="iconav-slider navbar-inverse bg-inverse " id="index-navbar" style=";position:fixed;width=100%;z-index:999;" data-spy="affix" data-offset-top="197" >
 
     <ul  class="nav nav-fill  bg-default"aria-haspopup="false" aria-expanded="false"  active="" style="opacity:1;">
-        <% include contacts.ejs %>
         
+        <% include contacts.handlebars %>
       <!--dropdown menu-->
      
       <li class="nav-item" >
@@ -11,8 +11,8 @@
       </li>
       <li class="nav-item" >
         <a class="nav-link   text-right" style="color:white;font-weight:bold;text-decoration:none;"href="app.php?slide=upload">Upload</a>
-      </li>
-        <% include dropmenu.ejs %>
+      </li>     
+        <% include dropmenu.handlebars %>
     </ul>
   </nav>
   <!--navigation bars-->

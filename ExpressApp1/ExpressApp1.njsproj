@@ -30,6 +30,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="models\user.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="public\javascripts\bootstrap.min.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\newProduct.js">
@@ -44,30 +47,37 @@
     <Content Include="public\stylesheets\bootstrap.min.css" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
-    <Content Include="views\templates\contacts.ejs">
+    <Content Include="views\login.handlebars">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\templates\dropmenu.ejs">
+    <Content Include="views\register.handlebars">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\templates\header.ejs">
+    <Content Include="views\templates\contacts.handlebars">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\templates\dropmenu.handlebars">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\templates\header.handlebars">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\index.ejs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\old-index.pug" />
-    <Content Include="views\layout.ejs" />
+    <Content Include="views\layout.handlebars" />
     <Content Include="views\error.pug" />
-    <Content Include="views\templates\section.ejs">
+    <Content Include="views\templates\section.handlebars">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\templates\sidebar.ejs">
+    <Content Include="views\templates\sidebar.handlebars">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
+    <Folder Include="models\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
