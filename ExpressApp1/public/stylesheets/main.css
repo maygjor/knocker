@@ -18,12 +18,20 @@ opacity:1;
 
 
 }
-.down-list{
-  font-style: italic;
-  font-size: 20px;
-  overflow:visible;
+.auth-label {
+    font-size: 170%;
+    font-style: bold;
+}
+.down-list {
+    font-size: 170%;
+    font-style:bold;
+    overflow: visible;
     box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
-transform: scale(.9);
+    transform: scale(.9);
+}
+a:hover {
+    text-decoration: none;
+    z-index: 999;
 }
 
 .iconav-slider{

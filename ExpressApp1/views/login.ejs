@@ -1,2 +1,20 @@
 ﻿<% include templates/authentication-nav.handlebars %>
-login
+
+<section class="container form bg-gray">
+<form class="" action="app.php?slide=log_mysql" method="POST" style="border-radius:radius(25%);
+  margin:55px;">
+    <article class="form-group form-control bg-inverse">
+    <label for="email" class="auth-label">Enter your Email </label>
+    <input class="form-control"type="Email" name="email" placeholder=" Email"style="  border-radius:radius(25%);margin:0%">
+    </article>
+    <article class="form-group form-control bg-inverse">
+        <label for="password" class="auth-label">Enter your password </label>
+        <input class="form-control" type="password" pattern=".{6,}" name="password" placeholder=" Password" style="  border-radius:radius(25%);margin:0%">
+    </article>
+    <article class="form-group form-control bg-inverse">
+        <input class="btn btn-md btn-block  btn-success" type="submit" name="btn-login" value="login"></input>
+        <p class="text-primary text-lg text-center ">forget your password?<a class="text-warning" href="#">Click here!</a></p>
+        <button class="btn btn-md btn-block form-control btn-primary" type="button" value="Sign-up">signup</button>
+        </article>
+</form>
+</section>
