@@ -47,10 +47,14 @@
     <Content Include="public\stylesheets\bootstrap.min.css" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
-    <Content Include="views\login.handlebars">
+    <Content Include="views\index.ejs" />
+    <Content Include="views\login.ejs">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\register.handlebars">
+    <Content Include="views\register.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\templates\Authentication-nav.handlebars">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\templates\contacts.handlebars">
@@ -62,7 +66,7 @@
     <Content Include="views\templates\header.handlebars">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\index.ejs">
+    <Content Include="views\layouts\layout.handlebars">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\old-index.pug" />
@@ -85,6 +89,7 @@
     <Folder Include="routes\" />
     <Folder Include="views\" />
     <Folder Include="views\dynamic\" />
+    <Folder Include="views\layouts\" />
     <Folder Include="views\templates\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

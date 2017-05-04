@@ -5,7 +5,7 @@ let mongo = require('mongodb');
 let assert = require('assert');
 var url = "mongodb://localhost:27017/test";
 /* GET home page. */
-router.get('/', function (req, res, nxt) {
+router.get('/', function (req, res) {
     res.render('index.ejs', { title: "Home page", photo: "photo.png" });
 });
 router.get('/get-data', (req, res, nxt) => { });
