@@ -30,6 +30,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="public\brain\index.brain.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\brain\login.brain.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\brain\main.brain.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\brain\register.brain.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="models\user.js">
       <SubType>Code</SubType>
     </Compile>
@@ -40,7 +52,11 @@
     </Compile>
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
+    <Compile Include="webpack.config.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="package.json" />
+    <Content Include="public\images\menu.png" />
     <Content Include="public\javascripts\signal.js">
       <SubType>Code</SubType>
     </Content>
@@ -54,34 +70,39 @@
     <Content Include="views\register.ejs">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\templates\Authentication-nav.handlebars">
+    <Content Include="views\templates\Authentication-nav.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\templates\contacts.handlebars">
+    <Content Include="views\templates\contacts.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\templates\dropmenu.handlebars">
+    <Content Include="views\templates\dropmenu.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\templates\header.handlebars">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="views\layouts\layout.handlebars">
+    <Content Include="views\templates\header.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\old-index.pug" />
-    <Content Include="views\layout.handlebars" />
+    <Content Include="views\layout.html" />
     <Content Include="views\error.pug" />
-    <Content Include="views\templates\section.handlebars">
+    <Content Include="views\templates\mirror.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\templates\sidebar.handlebars">
+    <Content Include="views\templates\msg.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\templates\section.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\templates\aside.html">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="models\" />
+    <Folder Include="public\build\" />
+    <Folder Include="public\brain\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
@@ -89,7 +110,6 @@
     <Folder Include="routes\" />
     <Folder Include="views\" />
     <Folder Include="views\dynamic\" />
-    <Folder Include="views\layouts\" />
     <Folder Include="views\templates\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

@@ -1,26 +1,63 @@
-﻿<% include templates/authentication-nav.handlebars %>
-<section class="container form bg-gray">
-    <form class="" action="app.php?slide=log_mysql" method="POST" style="border-radius:radius(25%);
+﻿
+<% include templates/authentication-nav.html %>
+
+
+<section class="">
+    <form class="" action="/users/register" method="POST" style="border-radius:radius(25%);transform:scale(.8);
   margin:55px;">
-        <article class="form-group form-control bg-inverse">
+        <article class="form-group form-control no-margin bg-inverse">
             <label for="email" class="auth-label">Enter your Email </label>
-            <input class="form-control" type="Email" name="email" placeholder=" Email" style="  border-radius:radius(25%);margin:0%">
+            <input class="form-control" type="Email" name="email" placeholder=" Email" style="">
         </article>
-        <article class="form-group form-control bg-inverse">
-            <label for="name" class="auth-label">Enter your name </label>
-            <input class="form-control" type="text" pattern="(?=.*[a-z]).{6,}" name="name" placeholder="enter your name" style="  border-radius:radius(25%);margin:2%">
+        <% errors.forEach((errors)=>{ %>
+        <% if(errors.msg.includes("Email")){ %>
+         <p class="alert alert-danger alert-sm"><%= errors.msg %></p>
+        <%}});%>
+        <!---->
+        <article class="form-group form-control no-margin bg-inverse">
+            <label for="username" class="auth-label">Username</label>
+            <input class="form-control" id="username" type="text" name="username" onchange="isAvailable()" onblur="isAvailable()" placeholder="Enter username" style="">
         </article>
-        <article class="form-group form-control bg-inverse">
-            <label for="password" class="auth-label">Enter your password </label>
-            <input class="form-control" type="password" pattern=".{6,}" name="password" placeholder=" Password" style="  border-radius:radius(25%);margin:0%">
-        </article>
-        <article class="form-group form-control bg-inverse">
-            <input class="btn btn-lg btn-block btn-primary" type="submit"></input>
-            <p class="text-primary text-lg text-center ">Already have account?</p>
-            <button class="btn btn-lg btn-block btn-success" type="button" name="btn-login">login</button>
+        <p id="available"class="alert alert-danger">hi<p>
+        <% errors.forEach((errors)=>{ %>
+        <% if(errors.msg.includes("Username")){ %>
+        <p class="alert alert-danger"><%= errors.msg %></p>
+        <%}});%>
+        <!---->
+            <article class="form-group form-control no-margin bg-inverse">
+                <label for="name" class="auth-label">Enter your name </label>
+                <input class="form-control" type="text" pattern="(?=.*[a-z]).{3,}" name="name" placeholder="enter your name" required>
+            </article>
+        <% errors.forEach((errors)=>{ %>
+        <% if(errors.msg.includes("Name")){ %>
+        <p class="alert alert-danger"><%= errors.msg %></p>
+        <%}});%>
+            <article class="form-group form-control no-margin bg-inverse">
+                <label for="password" class="auth-label">Enter your password </label>
+                <input class="form-control" type="password" pattern=".{6,}" name="password" placeholder=" Password">
+            </article>
+        <% errors.forEach((errors)=>{ %>
+        <% if(errors.msg.includes("Password")){ %>
+        <p class="alert alert-danger"><%= errors.msg %></p>
+        <%}});%>
+            <article class="form-group form-control no-margin bg-inverse">
+                <label for="password2" class="auth-label">Re-enter your password </label>
+                <input class="form-control" type="password" pattern=".{6,}" name="password2" placeholder=" Password">
+            </article>
+        <% errors.forEach((errors)=>{ %>
+        <% if(errors.msg.includes("Repeat")||errors.msg.includes("match")){ %>
+        <p class="alert alert-danger"><%= errors.msg %></p>
+        <%}});%>
+            <article class="form-group form-control no-margin bg-inverse">
+                <input class="btn btn-block btn-primary" type="submit" value="Register">
+<p class="text-primary text-lg text-center ">Already have account?</p>
+            <button class="btn btn-block btn-success" type="button" name="btn-login">login</button>
         </article>
     </form>
 </section>
 
+
+
+ 
 
 

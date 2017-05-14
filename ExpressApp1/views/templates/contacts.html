@@ -1,0 +1,62 @@
+﻿<li class=" dropdown nav  nav-fill nav-item col-md-1" style="opacity:1;">
+  
+ 
+    <button class="btn btn-inverse btn-sm active bg-inverse press" aria-haspopup="true" aria-expanded="true" data-toggle="dropdown">
+        <img src="images/logo.png" class="icon"/>
+    </button>
+
+
+        <div class="navbar-header bg-inverse">
+            <a class="navbar-brand" href="#">Rankey</a>
+        </div>
+        <ul class="dropdown-menu bg-inverse" style="opacity:.5;">
+            <li class="down-list bg-inverse text-default" style="z-index:999;">
+                <a class="text-info" href="app.php?slide=register">new user</a>
+            </li>
+            <li class="down-list bg-inverse text-default" style="z-index:999;">
+                <a class="text-info" href="app.php?slide=login">login</a>
+            </li>
+            <li class="down-list bg-inverse text-default" style="z-index:999;">
+                <a class="text-info" href="app.php?slide=imageUpload">imageUpload</a>
+            </li>
+
+
+
+
+
+            <li *ngFor="#c of contacts" class="down-list bg-inverse text-default" style="z-index:999;border:ridge;border:2px bold blueviolet;">
+                <button class="btn btn-inverse btn-lg dropdown-toggle active bg-inverse" aria-haspopup="true" aria-expanded="true" data-toggle="dropdown">
+                    <a class="friend-img" href="app.php?slide=grid">
+                        <section id="skin" draggable="true" dropzone="move" class="bg-inverse">
+                            <img class="icon" src="images/photo.jpg">
+                            <p class="vid-p text-muted bg-inverse" style="position:absolute;overflow-x:visible;">grid<p>
+                            </img>
+                        </section>
+                    </a>
+                    <a class="friend-menu">
+                        <section id="skin" draggable="true" dropzone="move" class="bg-inverse">
+                            <img class="icon" src="images/menu.png" style="">
+                            <p class="vid-p text-muted bg-inverse text-warning" style="position:absolute;overflow-x:visible;">Hi im your best friend , Call me back when you read this </p>
+                            </img>
+                        </section>
+                    </a>
+                    <a class="friend-video">
+                        <section id="skin" draggable="true" dropzone="move" class="bg-inverse">
+                            <video id="" class="movie icon" poster="images/cam-t.png" src=""></video>
+                            <p class='vid-p' class="text-muted bg-inverse" style="position:absolute;overflow-x:visible;"> friend</p>
+                        </section>
+                    </a>
+                </button>    
+                
+            </li>
+     
+
+
+
+
+
+
+
+        </ul>
+</li>
+

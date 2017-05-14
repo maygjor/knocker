@@ -1,0 +1,21 @@
+﻿
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'/>
+  <link rel='stylesheet' href='/stylesheets/main.css'/>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ <script src="/javascripts/bootstrap.min.js"></script>
+<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+<script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+<script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+   
+<script>  
+        let myvid = document.getElementById('myvid');
+        let startbtn = document.getElementById('startbtn');
+        startbtn.onclick = navigator.getUserMedia({ video: true, audio: true }, (stream) => {
+            myvid.src = window.URL.createObjectURL(stream);
+        }, (e) => {
+            console.log(e.message);
+        });
+    //Excute Jquery Code Here
+  </script>

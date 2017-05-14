@@ -1,19 +1,24 @@
-﻿<% include layout.handlebars %>
-<% include templates/header.handlebars %>
+﻿
+   
 
-<% include templates/section.handlebars %>
+ 
 
-<% include templates/sidebar.handlebars %>
+   
+   
+
+    <% include templates/header.html %>
+    <% include templates/section.html %>
+    <% include templates/aside.html %>
+    <% include layout.html %>
+        
+    
 
 
-<script>
-    let myvid = document.getElementById('myvid');
-    let startbtn = document.getElementById('startbtn');
-    startbtn.onclick=navigator.getUserMedia({ video: true, audio: true }, (stream) => {
-        myvid.src = window.URL.createObjectURL(stream);
 
-    },(e) => {
-        console.log(e.message);
-    });
 
-</script>
+
+
+
+
+
+

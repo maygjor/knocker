@@ -1,18 +1,27 @@
-body{
-margin:0;
-padding:0;
-
+body {
+    margin: 0;
+    padding: 0;
+    scrollbar-arrow-color: blueviolet";
 }
-.icon{
-  width: 44px;
-  height:40px;
-  border-radius:50px;
+.icon {
+    width: 44px;
+    height: 40px;
+    border-radius: 50px;
 }
 .icon:hover{
   overflow:visible;
 		box-shadow: 20px 15px 20px rgba(0,0, 0, 0.4);
-transform: scale(1.05);
+transform: scale(1.08);
 }
+.press:active {
+    transform: scale(.9);
+}
+.rotate:hover {
+    transform: rotate(2900deg);
+    transform: rotate(3900deg);
+    transform: rotate(900deg);
+}
+
 .nav-item{
 opacity:1;
 
@@ -183,3 +192,10 @@ z-index:9998;
   padding:0;margin:0;
 
 	}
+.alert{
+    margin:0;
+    padding:0;
+}
+.no-margin{
+    margin:0;
+}

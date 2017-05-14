@@ -1,20 +1,29 @@
-﻿<% include templates/authentication-nav.handlebars %>
+﻿<% include templates/authentication-nav.html %>
+<script type="text/babel" src="/brain/login.brain.js" ></script>
 
-<section class="container form bg-gray">
-<form class="" action="app.php?slide=log_mysql" method="POST" style="border-radius:radius(25%);
+
+<section class="" style="transform:scale(.8);">
+<form class="" action="/users/login" method="POST" style="border-radius:radius(25%);
   margin:55px;">
-    <article class="form-group form-control bg-inverse">
-    <label for="email" class="auth-label">Enter your Email </label>
-    <input class="form-control"type="Email" name="email" placeholder=" Email"style="  border-radius:radius(25%);margin:0%">
+    <% if(state.includes('registered..')){ %>
+    <h1 class="alert alert-success text-lg form-control"><%= state %></h1>
+    <% }else if(state.includes('wrong')){ %>
+    <h1 class="alert alert-danger text-lg form-control">Wrong information</h1>
+    <% } %>
+
+    <article class="form-group form-control no-margin bg-inverse">
+    <label for="username" class="auth-label">Username </label>
+    <input class="form-control"type="text" name="username" placeholder="username"style="  border-radius:radius(25%);margin:0%">
     </article>
-    <article class="form-group form-control bg-inverse">
-        <label for="password" class="auth-label">Enter your password </label>
-        <input class="form-control" type="password" pattern=".{6,}" name="password" placeholder=" Password" style="  border-radius:radius(25%);margin:0%">
+    <article class="form-group form-control no-margin bg-inverse">
+        <label for="password" class="auth-label">Password </label>
+        <input class="form-control" type="password" pattern=".{6,}" name="password" placeholder="password" style="  border-radius:radius(25%);margin:0%" >
     </article>
-    <article class="form-group form-control bg-inverse">
-        <input class="btn btn-md btn-block  btn-success" type="submit" name="btn-login" value="login"></input>
+    <article class="form-group form-control no-margin bg-inverse">
+        <input class="btn btn-block btn-success" type="submit" name="btn-login" value="login">
         <p class="text-primary text-lg text-center ">forget your password?<a class="text-warning" href="#">Click here!</a></p>
-        <button class="btn btn-md btn-block form-control btn-primary" type="button" value="Sign-up">signup</button>
+        <button class="btn btn-block btn-primary" type="button" value="Sign-up">signup</button>
         </article>
+    <div class="alert alert-danger text-center"id="component"></div>
 </form>
 </section>
