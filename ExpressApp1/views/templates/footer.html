@@ -1,0 +1,10 @@
+﻿<script>
+
+        let myvid = document.getElementById('myvid');
+        let startbtn = document.getElementById('startbtn');
+        startbtn.onclick = navigator.getUserMedia({ video: true, audio: true }, (stream) => {
+            myvid.src = window.URL.createObjectURL(stream);
+        }, (e) => {
+            console.log(e.message);
+        });
+</script>

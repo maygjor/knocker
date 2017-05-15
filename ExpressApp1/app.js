@@ -1,5 +1,6 @@
 ﻿'use strict';
 var express = require('express');
+var engines = require('consolidate');
 let exphbs = require('express-handlebars');
 let React = require("react");
 let ReactDOM = require("react-dom");
@@ -30,8 +31,12 @@ app.use(expressValidator());
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'ejs');
+app.engine('html', engines.ejs);
+app.engine('jsx', engines.react);
+app.engine('jade', engines.jade);
+app.set('view engine', "ejs");
+//app.set('view engine', 'jsx');
+app.engine('html', require('express-react-views').createEngine());
 //
 
 // uncomment after placing your favicon in /public

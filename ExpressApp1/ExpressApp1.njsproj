@@ -79,6 +79,9 @@
     <Content Include="views\templates\dropmenu.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\templates\footer.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\templates\header.html">
       <SubType>Code</SubType>
     </Content>

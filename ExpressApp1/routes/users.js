@@ -9,11 +9,13 @@ let User = require('../models/user');
 //register
 router.get('/register', function (req, res) {
     let errors = [];
-    res.render('register.ejs', {errors:errors});
+    let usercheck = [];
+    let emailcheck = [];
+    res.render('register.ejs', { errors: errors,usercheck,emailcheck});
 });
 //login
 router.get('/login', function (req, res) {
-    let state = [];
+    let state = [];  
     res.render('login.ejs', { state: state});
 });
 //register form handling
@@ -24,32 +26,54 @@ router.post('/register', function (req, res) {
     let password2 = req.body.password;
     let name = req.body.name;
     req.checkBody('email', 'Email is required').notEmpty();
-    req.checkBody('email', 'Email should be valid').isEmail();
+    req.checkBody('email', 'Enter a valid email@msg.com email syntax').isEmail();
     req.checkBody('name', 'Name is required').notEmpty();
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
     req.checkBody('password2', 'Repeat the same password').notEmpty();
     req.checkBody('password2', 'There is no match').equals(req.body.password);
-    var errors = req.validationErrors();
+    let errors = req.validationErrors();
+    let usercheck = [];
+    let emailcheck = [];
     if (errors) {
-        res.render('register.ejs', { errors: errors });
+        res.render('register.ejs', { errors: errors, usercheck: usercheck,emailcheck:emailcheck });
         console.log(errors);
     } else {
-        let newUser = new User({
-            email: email,
-            username: username,
-            password: password,
-            name:name
+        
+            let newUser = new User({
+                email: email,
+                username: username,
+                password: password,
+                name: name
         });
-   
-        User.createUser(newUser, (err, User) => {
-            console.log(User);
-        });
-        var state = "Successfully registered.."
-        res.render('login.ejs', { state: state});
-        res.redirect('/users/login');
-    }
+            
+            User.userCheck(newUser, (err, user) => {               
+                if (user) {
+                    console.log(user.username);
+                    var usercheck = "Username is already in use";
+                    res.render('register.ejs', { errors: errors, usercheck: usercheck,emailcheck:emailcheck });
+                  
+                } else{
+                   // res.render('register.ejs', { errors: errors, usercheck: "", emailcheck:"" });
+                    User.emailCheck(newUser, (err, output) => {
+                        if (output) {
+                            console.log(output.email);
+                            var emailcheck = ("Email " + output.email + " is already registered");
+                            res.render('register.ejs', { errors: errors,usercheck:usercheck, emailcheck: emailcheck });
+                        } else {
 
+                            User.createUser(newUser, (err, User) => {
+                                console.log(User);
+                            });
+                            var state = "Successfully registered";
+                            //res.redirect("/users/login"); 
+                            res.render('login.ejs', { state: state });                           
+                        }
+                    });
+                    
+                }
+            });        
+    }
 });
 passport.serializeUser((user, done) => {
     done(null,user.id)
@@ -80,11 +104,8 @@ passport.use(new localStrategy(
 
 router.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: false }),
     function(req, res){
-        res.redirect('/');
-      /*  let username = db.users.find({"username": req.body.username })
-        let password = db.users.find({ "password": req.body.password })
-        let accountState = 'You are logged in';
-        res.render('index.ejs', { accountState: accountState }); */
+        var accountState = "You are logged in";
+        res.render('index.ejs', { accountState: accountState }); 
         
     });
 

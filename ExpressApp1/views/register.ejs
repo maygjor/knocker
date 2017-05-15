@@ -1,7 +1,6 @@
 ﻿
 <% include templates/authentication-nav.html %>
 
-
 <section class="">
     <form class="" action="/users/register" method="POST" style="border-radius:radius(25%);transform:scale(.8);
   margin:55px;">
@@ -9,45 +8,48 @@
             <label for="email" class="auth-label">Enter your Email </label>
             <input class="form-control" type="Email" name="email" placeholder=" Email" style="">
         </article>
-        <% errors.forEach((errors)=>{ %>
-        <% if(errors.msg.includes("Email")){ %>
+        <%if(errors){ errors.forEach((errors)=>{ %>
+        <% if(errors.msg.includes("Email")||errors.msg.includes("email")){ %>
          <p class="alert alert-danger alert-sm"><%= errors.msg %></p>
-        <%}});%>
+        <%}});}%>
+        <p class="alert alert-danger alert-sm"><%= emailcheck %></p>
         <!---->
         <article class="form-group form-control no-margin bg-inverse">
             <label for="username" class="auth-label">Username</label>
             <input class="form-control" id="username" type="text" name="username" onchange="isAvailable()" onblur="isAvailable()" placeholder="Enter username" style="">
         </article>
-        <p id="available"class="alert alert-danger">hi<p>
-        <% errors.forEach((errors)=>{ %>
+        <% if(errors){errors.forEach((errors)=>{ %>
         <% if(errors.msg.includes("Username")){ %>
         <p class="alert alert-danger"><%= errors.msg %></p>
-        <%}});%>
+        <%}});}%>
+        <% if(usercheck){ %>
+        <p class="alert alert-danger alert-sm"><%= usercheck %></p>
+        <% } %>
         <!---->
             <article class="form-group form-control no-margin bg-inverse">
                 <label for="name" class="auth-label">Enter your name </label>
                 <input class="form-control" type="text" pattern="(?=.*[a-z]).{3,}" name="name" placeholder="enter your name" required>
             </article>
-        <% errors.forEach((errors)=>{ %>
+        <% if(errors){errors.forEach((errors)=>{ %>
         <% if(errors.msg.includes("Name")){ %>
         <p class="alert alert-danger"><%= errors.msg %></p>
-        <%}});%>
+        <%}});}%>
             <article class="form-group form-control no-margin bg-inverse">
                 <label for="password" class="auth-label">Enter your password </label>
                 <input class="form-control" type="password" pattern=".{6,}" name="password" placeholder=" Password">
             </article>
-        <% errors.forEach((errors)=>{ %>
+        <% if(errors){errors.forEach((errors)=>{ %>
         <% if(errors.msg.includes("Password")){ %>
         <p class="alert alert-danger"><%= errors.msg %></p>
-        <%}});%>
+        <%}});}%>
             <article class="form-group form-control no-margin bg-inverse">
                 <label for="password2" class="auth-label">Re-enter your password </label>
                 <input class="form-control" type="password" pattern=".{6,}" name="password2" placeholder=" Password">
             </article>
-        <% errors.forEach((errors)=>{ %>
+        <% if(errors){errors.forEach((errors)=>{ %>
         <% if(errors.msg.includes("Repeat")||errors.msg.includes("match")){ %>
         <p class="alert alert-danger"><%= errors.msg %></p>
-        <%}});%>
+        <%}});}%>
             <article class="form-group form-control no-margin bg-inverse">
                 <input class="btn btn-block btn-primary" type="submit" value="Register">
 <p class="text-primary text-lg text-center ">Already have account?</p>
@@ -60,4 +62,13 @@
 
  
 
-
+<script type="text/babel">
+    let duplicate = React.createClass({
+    render: () => {return (
+    <h1>hik</h1>);
+    }});
+   
+    ReactDOM.render(
+    <duplicate className="alert alert-success alert-sm form-control">ok what next?</duplicate>, document.getElementById('duplicate'));
+  
+</script>
