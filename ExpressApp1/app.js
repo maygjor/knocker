@@ -1,13 +1,6 @@
 ﻿'use strict';
 var express = require('express');
 var engines = require('consolidate');
-let exphbs = require('express-handlebars');
-let React = require("react");
-let ReactDOM = require("react-dom");
-const $ = React.createElement;
-let Redux = require("redux");
-const store = Redux.createStore;
-let nodemon = require('nodemon');
 let expressValidator = require('express-validator');
 let session = require('express-session');
 let passport = require('passport');

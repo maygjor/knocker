@@ -30,31 +30,32 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
-    <Compile Include="public\brain\index.brain.js">
+    <Compile Include="brains\js\actions\selectFriend.js" />
+    <Compile Include="brains\js\components\app.js" />
+    <Compile Include="brains\js\containers\friendDetails.js" />
+    <Compile Include="brains\js\containers\list.js" />
+    <Compile Include="brains\js\index.brain.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="public\brain\login.brain.js">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="public\brain\main.brain.js">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="public\brain\register.brain.js">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="brains\js\reducers\activeFriendReducer.js" />
+    <Compile Include="brains\js\reducers\allReducers.js" />
+    <Compile Include="brains\js\reducers\friendsReducer.js" />
     <Compile Include="models\user.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="public\javascripts\bootstrap.min.js" />
+    <Compile Include="public\javascripts\bundle.min.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\newProduct.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
-    <Compile Include="webpack.config.js">
+    <Compile Include="OLDwebpack.config.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="webpack.config.js" />
+    <Content Include="brains\scss\style.scss" />
     <Content Include="package.json" />
     <Content Include="public\images\menu.png" />
     <Content Include="public\javascripts\signal.js">
@@ -103,9 +104,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
+    <Folder Include="brains\js\" />
+    <Folder Include="brains\js\actions\" />
+    <Folder Include="brains\js\components\" />
+    <Folder Include="brains\js\containers\" />
+    <Folder Include="brains\js\reducers\" />
+    <Folder Include="brains\scss\" />
     <Folder Include="models\" />
     <Folder Include="public\build\" />
-    <Folder Include="public\brain\" />
+    <Folder Include="brains\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />

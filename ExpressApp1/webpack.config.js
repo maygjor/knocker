@@ -1,46 +1,31 @@
-﻿let path = require('path');
-let webpack = require('webpack');
-
+var path = require('path');
+var webpack = require('webpack');
 module.exports = {
-    entry: {
-        main: "./public/brain/main.brain.js",
-        index:"./public/brain/index.brain.js",
-        login: "./public/brain/login.brain.js",
-        register:"./public/brain/register.brain.js"
-
+    devServer: {
+        inline: true,
+        contentBase: './',
+        port: 1337
     },
-    output: {
-        path: path.resolve(__dirname,"js"),
-        filename: "[name].nerve.js"
-    },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "brain",
-            chunks: ["main","index", "login","register"]
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "nerve-users",
-            chunks: ["login", "register"]
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "nerve-index",
-            chunks: ["index"]
-        }),
-    ],
+    devtool: 'cheap-module-eval-source-map',
+    entry: './brains/js/index.brain.js',
     module: {
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react' ,'env']
-                },
+                loaders: ['babel'],
                 exclude: /node_modules/
+            },
+            {
+                test: /\.scss/,
+                loader: 'style-loader!css-loader!sass-loader'
             }
         ]
     },
-    stats: {
-        colors: true
+    output: {
+        path: 'public',
+        filename: '/javascripts/bundle.min.js'
     },
-    devtool: 'source-map',
+    plugins: [
+        new webpack.optimize.OccurrenceOrderPlugin()
+    ]
 };
