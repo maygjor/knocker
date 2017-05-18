@@ -5,11 +5,18 @@
 <section class="" style="transform:scale(.8);">
 <form class="" action="/users/login" method="POST" style="border-radius:radius(25%);
   margin:55px;">
+    <% if(state){ %>
     <% if(state.includes('registered')){ %>
     <h1 class="alert alert-success text-lg form-control"><%= state %></h1>
     <% }else if(state.includes('wrong')){ %>
     <h1 class="alert alert-danger text-lg form-control">Wrong information</h1>
+    <% }} %>
+    <!--  -->
+    <% if(flash){ %>
+    <p class="alert alert-danger alert-sm"><%= flash %></p>
     <% } %>
+
+
 
     <article class="form-group form-control no-margin bg-inverse">
     <label for="username" class="auth-label">Username </label>

@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 let passport = require('passport');
 let localStrategy = require('passport-local').Strategy;
+let flash = require('connect-flash');
 let mongoose = require('mongoose');
 let db = mongoose.connection;
 let User = require('../models/user');
@@ -16,7 +17,8 @@ router.get('/register', function (req, res) {
 //login
 router.get('/login', function (req, res) {
     let state = [];  
-    res.render('login.ejs', { state: state});
+    let logerr = [];
+    res.render('login.ejs', { state: state,errors:logerr,flash:req.flash('nothing')});
 });
 //register form handling
 router.post('/register', function (req, res) {
@@ -66,8 +68,8 @@ router.post('/register', function (req, res) {
                                 console.log(User);
                             });
                             var state = "Successfully registered";
-                            //res.redirect("/users/login"); 
-                            res.render('login.ejs', { state: state });                           
+                            let logerr = logerr;
+                            res.render('login.ejs', { state: state ,logerr:logerr ,flash:req.flash()});                           
                         }
                     });
                     
@@ -83,38 +85,43 @@ passport.deserializeUser((id, done)=>{
         done(err, user);
     });
 });
-passport.use(new localStrategy(
-    function (username, password, done) {
-        User.getUserByUsername(username, (err, user) => {
-            //if (err) throw err;
-            if (!user) {
-                return done(null, false, { message: 'Unknown user' });
-            }
-            User.comparePassword(password, user.password, (err, isMatch) => {
+
+    passport.use(new localStrategy({ passReqToCallback: true },
+        function (req,res, username, password, done) {
+            User.getUserByUsername(username, (err, user) => {
                 if (err) throw err;
-                if (isMatch) {
-                    return done(null, user);
-                } else {
-                    return done(null, false, { message: 'Invalid password' });
+                if (!user) {
+                    return done(null, false, req.flash('message', 'Invalid username'));
                 }
+                User.comparePassword(password, user.password, (err, isMatch) => {
+                    if (err) throw err;
+                    if (isMatch) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false, req.flash('message', 'Invalid password'));
+                    }
+                });
             });
-        });
-    }));
+        }));
 
 
-router.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: false }),
+
+router.post('/login', (req, res, next) => {
+    console.log(req.flash('message'));
+    res.render('login.ejs', { flash: req.flash('message'), state: state, logerr: logerr });
+},
+    passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
     function(req, res){
         var accountState = "You are logged in";
         res.render('index.ejs', { accountState: accountState }); 
         
     });
-
-
     
 router.get('/logout', (req,res) => {
     req.logout();
-    let state='You logged out';
-    res.render('login.ejs', { state: state });
+    let state = 'You logged out';
+    let logerr = [];
+    res.render('login.ejs', { state: state ,logerr:logerr });
     res.redirect('/users/login');
 })
 

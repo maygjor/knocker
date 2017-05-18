@@ -51,6 +51,8 @@ app.use(session({ secret: 'software engineering', saveUninitialized: true, resav
 //Passport init
 app.use(passport.initialize());
 app.use(passport.session());
+//Connect Flash
+app.use(flash());
 //routes
 app.use('/', routes);
 app.use('/users', users);
@@ -104,14 +106,16 @@ app.use(expressValidator({
     }
 }));
 
-//Connect Flash
-app.use(flash());
+
+
+
 //Global Flash Variables
 app.use((req, res, next) => {
-    res.locals.success_msg= req.flash('success');
-    res.locals.error_msg = req.flash('error_msg');
+    res.locals.success_msg= req.flash('success','successfull');
+    res.locals.error_msg = req.flash('error_msg','unknown error');
     res.locals.error = req.flash('error');
     res.locals.user = req.user || null;
+    req.flash('nothing', " ");
     next();
 });
 
