@@ -4,15 +4,15 @@ import {connect} from 'react-redux';
 class friendDetails extends Component{
   render(){
     if(!this.props.friend){
-      return(<h1>select a fried to start chat..</h1>);
+      return(<p>Start chating by selecting contact</p>);
     }
-    return(
-      <article>
-         <img src={this.props.friend.thumbnail} />
-         <h2>Name:{this.props.friend.first} {this.props.friend.last}</h2>
-         <h3>Age:{this.props.friend.age}</h3>
-         <strong>Description:</strong>
-         <h4>{this.props.friend.description}</h4>
+    return (
+        <article className="rec-margin text-primary">
+         <img src="/images/photo.jpg" />
+         <p>{this.props.friend.first} {this.props.friend.last}</p>
+         <p>Age:{this.props.friend.age}</p>
+         <p>Description:</p>
+         <p>{this.props.friend.description}</p>
       </article>
     );
   }

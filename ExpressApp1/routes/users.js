@@ -68,8 +68,8 @@ router.post('/register', function (req, res) {
                                 console.log(User);
                             });
                             var state = "Successfully registered";
-                            let logerr = logerr;
-                            res.render('login.ejs', { state: state ,logerr:logerr ,flash:req.flash()});                           
+                            let logerr = [];
+                            res.render('login.ejs', { state: state ,errors:logerr ,flash:req.flash()});                           
                         }
                     });
                     
@@ -108,12 +108,13 @@ passport.deserializeUser((id, done)=>{
 
 router.post('/login', (req, res, next) => {
     console.log(req.flash('message'));
-    res.render('login.ejs', { flash: req.flash('message'), state: state, logerr: logerr });
-},
-    passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
+    let state = [];
+    let logerr = [];
+    res.render('login.ejs', { flash: req.flash('message'), state: state, errors: logerr });
+},passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
     function(req, res){
         var accountState = "You are logged in";
-        res.render('index.ejs', { accountState: accountState }); 
+        res.render('index.ejs', { title:username,accountState: accountState }); 
         
     });
     
@@ -121,7 +122,7 @@ router.get('/logout', (req,res) => {
     req.logout();
     let state = 'You logged out';
     let logerr = [];
-    res.render('login.ejs', { state: state ,logerr:logerr });
+    res.render('login.ejs', { state: state ,errors:logerr });
     res.redirect('/users/login');
 })
 

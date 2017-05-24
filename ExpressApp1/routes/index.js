@@ -1,39 +1,42 @@
 ﻿'use strict';
 var express = require('express');
 var router = express.Router();
-let mongo = require('mongodb');
 let assert = require('assert');
+let mongoose = require('mongoose');
+
+let Blog = require('../models/blog');
+let db = require('../models/user').db;
+let reactHelper = require('react-helper');
+let expressReactHelper = require('express-react-helper');
 /* GET home page. */
 router.get('/', ensureAuthenticated, (req, res) => {
     let accountState = [];
-    res.render('index.ejs', { title: "Home page", photo: "photo.png", accountState:accountState });
+    db.collection('jobs').find().toArray(function (err, jobs) {
+        console.log(jobs);
+        const component = reactHelper.renderComponent('jobsReducer', jobs);
+        res.render('index.ejs', { title: "Knowker", accountState: accountState, component });
+    });
+    
 });
 function ensureAuthenticated(req, res, next,err) {
     if (err) throw err;
     if (req.isAuthenticated()) {
         let accountState = 'You are logged in';
-        res.render('index.ejs', { title: "Home page", photo: "photo.png", accountState: accountState });
+        console.log(accountState);
+        res.render('index.ejs', { title: "Home page", accountState: accountState });
         return next();
     } else {
         let accountState = 'You are not logged in';
-        res.render('index.ejs', { title: "Home page", photo: "photo.png", accountState: accountState});
+        res.render('index.ejs', { title: "Home page", accountState: accountState});
         res.redirect('users/login');
     }
 }
+router.get('/newpost', (req,res) => {
+    res.render('templates/newBlogPost.ejs');
+})
 
-router.get('/get-data', (req, res, nxt) => { });
 
-router.post('/insert', (req, res,collec,item, nxt) => {
-    mongo.connect(url, (db,err) => {
-        assert.equal(null, err)
-        db.collection(collec).insert(item, () => {
-            assert.equal(null, err);
-            console.log('item inserted.');
-        })
-    })
-});
-router.post('/update', (req, res, nxt) => { });
-router.post('/delete', (req, res, nxt) => { });
+
 
 module.exports = router;
 

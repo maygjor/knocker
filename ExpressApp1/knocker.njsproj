@@ -3,7 +3,7 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <Name>ExpressApp1</Name>
+    <Name>knocker</Name>
     <RootNamespace>ExpressApp1</RootNamespace>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -11,7 +11,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a3092d5e-b215-4dda-a602-c8ea960a1e13</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
+    <ProjectHome>
+    </ProjectHome>
     <StartupFile>bin\www</StartupFile>
     <SearchPath>
     </SearchPath>
@@ -30,21 +31,66 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="brains\js\actions\blur.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="brains\js\actions\selectFriend.js" />
+    <Compile Include="brains\js\actions\selectPost.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="brains\js\components\app.js" />
+    <Compile Include="brains\js\components\friendsAside.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="brains\js\components\jobsAside.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="brains\js\components\jobsSection.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="brains\js\components\postSection.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="brains\js\containers\friendDetails.js" />
+    <Compile Include="brains\js\containers\friendPost.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="brains\js\containers\jobpost.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="brains\js\containers\jobslist.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="brains\js\containers\list.js" />
     <Compile Include="brains\js\index.brain.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="brains\js\reducers\activeFriendReducer.js" />
+    <Compile Include="brains\js\reducers\activePostReducer.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="brains\js\reducers\allReducers.js" />
     <Compile Include="brains\js\reducers\friendsReducer.js" />
+    <Compile Include="brains\js\reducers\jobsReducer.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="models\blog.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="models\job.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="models\user.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\bg-space.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="public\javascripts\bootstrap.min.js" />
     <Compile Include="public\javascripts\bundle.min.js" />
+    <Compile Include="routes\blogs.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="routes\index.js" />
     <Compile Include="routes\newProduct.js">
       <SubType>Code</SubType>
@@ -54,14 +100,27 @@
     <Compile Include="OLDwebpack.config.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="views\dynamic\jobsRender.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="views\templates\newBlogPost.ejs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="webpack.config.js" />
+    <Content Include=".babelrc" />
     <Content Include="brains\scss\style.scss" />
     <Content Include="package.json" />
     <Content Include="public\images\menu.png" />
     <Content Include="public\javascripts\signal.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\stylesheets\blog.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="public\stylesheets\bootstrap.min.css" />
+    <Content Include="public\stylesheets\loading.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="views\index.ejs" />
@@ -83,16 +142,28 @@
     <Content Include="views\templates\footer.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\templates\friends.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\templates\header.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\old-index.pug" />
     <Content Include="views\layout.html" />
     <Content Include="views\error.pug" />
+    <Content Include="views\templates\jumbotron.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\templates\mirror.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\templates\msg.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\templates\profile.htm">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\templates\profile.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\templates\section.html">

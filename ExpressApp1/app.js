@@ -1,6 +1,11 @@
 ﻿'use strict';
 var express = require('express');
 var engines = require('consolidate');
+let webpack = require('webpack');
+let config = require('./webpack.config');
+let webpackDevMiddleware = require('webpack-dev-middleware');
+let webpackHotMiddleware = require('webpack-hot-middleware');
+let expressReactHelper = require('express-react-helper');
 let expressValidator = require('express-validator');
 let session = require('express-session');
 let passport = require('passport');
@@ -9,7 +14,7 @@ let flash = require('connect-flash');
 var path = require('path');
 let mongodb = require('mongodb');
 let mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/webapp');
+mongoose.connect('mongodb://localhost/webapp:58147');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -18,22 +23,26 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var app = express();
 app.use(expressValidator());
-//Database setup
-
 // view engine setup
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
-app.engine('html', engines.ejs);
-app.engine('jsx', engines.react);
-app.engine('jade', engines.jade);
-app.set('view engine', "ejs");
-//app.set('view engine', 'jsx');
-app.engine('html', require('express-react-views').createEngine());
-//
+app.set("view engine", "ejs");
+app.engine('.ejs', engines.ejs); 
+
+/*/Webpack setup 
+const compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: { colors: true }
+}))
+app.use(webpackHotMiddleware(compiler, {
+    log: console.log
+}))*/
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(expressReactHelper.setup());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
